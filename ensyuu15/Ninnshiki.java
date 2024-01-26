@@ -4,27 +4,26 @@ import java.util.Scanner;
 
 public class Ninnshiki {
     public static void main(String[] args) {
-        Scanner stdIn = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         try {
             System.out.print("整数を入力 = ");
 
-            // 整数が入力されるまでループ
-            while (!stdIn.hasNextInt()) {
-                System.out.println("整数と認識できません！！");
-                stdIn.next(); // 不正な入力を読み捨てる
-            }
+            if (scanner.hasNextInt()) {
+                int inputNumber = scanner.nextInt();
 
-            int inputInteger1 = stdIn.nextInt(); //値を代入
-
-            if (inputInteger1 % 2 == 0) {
-                System.out.println(inputInteger1 + "は偶数");
+                if (inputNumber % 2 == 0) {
+                    System.out.println(inputNumber + " は偶数");
+                } else {
+                    System.out.println(inputNumber + " は奇数");
+                }
             } else {
-                System.out.println(inputInteger1 + "は奇数");
+                throw new ArithmeticException("整数と認識できません！！");
             }
-
-        }finally {
-            stdIn.close(); //Scannerを終了
+        } catch (ArithmeticException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            scanner.close();
         }
     }
 }
