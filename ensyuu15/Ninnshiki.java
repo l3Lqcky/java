@@ -20,7 +20,7 @@ public class Ninnshiki {
             } else {
                 throw new ArithmeticException("整数と認識できません！！");
             }
-        } catch (ArithmeticException e) {
+        } catch (ArithmeticException e) { 
             System.err.println(e.getMessage());
         } finally {
             scanner.close();
